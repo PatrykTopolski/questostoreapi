@@ -3,85 +3,120 @@ package com.codecool.questostoreapi.models.users;
 import com.codecool.questostoreapi.models.items.Artifact;
 import com.codecool.questostoreapi.models.items.Quest;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Student extends User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private int amountOfCoins;
-    private int roomID;
-    private List<Quest> questList;
-    private List<Artifact> artifactList;
     private int lvlOfExp;
+    private String login;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String phoneNum;
+    private String email;
+    private String address;
 
-    public Student(int id, String login, String password, String firstName, String lastName, String phoneNum, String email, String address, String userType, int amountOfCoins, int roomID, List<Quest> questList, List<Artifact> artifactList, int lvlOfExp) {
-        super(id, login, password, firstName, lastName, phoneNum, email, address, userType);
-        this.amountOfCoins = amountOfCoins;
-        this.roomID = roomID;
-        this.questList = questList;
-        this.lvlOfExp = lvlOfExp;
-        this.artifactList = artifactList;
+    @Override
+    public String getLogin() {
+        return login;
     }
 
-    public Student(){}
-
-    public Student(String login, String password, String userType){
-        super(login, password, userType);
+    @Override
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public Student(int userId, String login, String password, String name, String surname, String phone, String email,String adress){
-        setId(userId);
-        setLogin(login);
-        setPassword(password);
-        setFirstName(name);
-        setLastName(surname);
-        setPhoneNum(phone);
-        setEmail(email);
-        setAddress(adress);
-    };
-
-
-    public Student(int id, String login, String password, String userType) {
-        setId(id);
-        setLogin(login);
-        setPassword(password);
-        setUserType(userType);
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-
-    public Student(int id, String firstName, String lastName, String phoneNum, String email, String address, int roomID) {
-        setId(id);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNum(phoneNum);
-        setEmail(email);
-        setAddress(address);
-        this.roomID = roomID;
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Student(int id, String login, String password, String firstName, String lastName, String phoneNumber, String email, String address, int classID, int experiencePoints, int coolcoins){
-        setId(id);
-        setLogin(login);
-        setPassword(password);
-        setPassword(password);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNum(phoneNumber);
-        setEmail(email);
-        setAddress(address);
-        this.roomID = classID;
-        this.lvlOfExp = experiencePoints;
-        this.amountOfCoins = coolcoins;
+    @Override
+    public String getFirstName() {
+        return firstName;
     }
 
+    @Override
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    @Override
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String getAddress() {
+        return address;
+    }
+
+    @Override
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
     public int getAmountOfCoins() {
         return amountOfCoins;
     }
 
-    public int getRoomID() {
-        return roomID;
+    public void setAmountOfCoins(int amountOfCoins) {
+        this.amountOfCoins = amountOfCoins;
     }
 
+    @Override
     public int getLvlOfExp() {
         return lvlOfExp;
+    }
+
+    public void setLvlOfExp(int lvlOfExp) {
+        this.lvlOfExp = lvlOfExp;
     }
 }
