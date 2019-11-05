@@ -31,7 +31,6 @@ public class Student  {
     @ManyToMany(mappedBy = "students")
     List<Artifact> artifacts;
 
-    public Student(){};
 
     public void setArtifacts(List<Artifact> artifacts) { this.artifacts = artifacts; }
 
