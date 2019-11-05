@@ -1,63 +1,101 @@
 package com.codecool.questostoreapi.models.users;
 
-public class Mentor extends User {
-    private int roomID;
+import javax.persistence.*;
+import java.util.Set;
 
-    public Mentor(int id, String login, String password, String firstName, String lastName, String phoneNum, String email, String address, String userType, int roomID) {
-        super(id, login, password, firstName, lastName, phoneNum, email, address, userType);
-        this.roomID = roomID;
-    }
-    public Mentor(int id,  String firstName, String lastName, String phoneNum, String email, String address,  int roomID) {
-        setId(id);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNum(phoneNum);
-        setEmail(email);
-        setAddress(address);
-        this.roomID = roomID;
-    }
+// two tables one c.. entity : example
+@Entity
+@Table(name = "Mentor")
+@SecondaryTable(name = "mentor_personals")
+public class Mentor  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+//    @OneToMany(mappedBy = "Mentor")
+//    private Set<Student> students;
+    private String login;
+    private String password;
+    @Column(table = "mentor_personals")
+    private String firstName;
+    @Column(table = "mentor_personals")
+    private String lastName;
+    @Column(table = "mentor_personals")
+    private String phoneNum;
+    @Column(table = "mentor_personals")
+    private String email;
+    @Column(table = "mentor_personals")
+    private String address;
 
-    public Mentor(int id, String login, String password, String userType){
-        this.setId(id);
-        this.setLogin(login);
-        this.setPassword(password);
-        this.setUserType(userType);
-    }
 
-    public Mentor(String login, String password, String userType){
-        setLogin(login);
-        setPassword(password);
-        setUserType(userType);
-    }
-
-    public Mentor(int id,  String firstName, String lastName, String phoneNum, String email, String address) {
-        setId(id);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNum(phoneNum);
-        setEmail(email);
-        setAddress(address);
-
+    public int getId() {
+        return id;
     }
 
-    public Mentor(int id, int roomID){
-        super();
-        setId(id);
-        this.roomID = roomID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Mentor(int user_id, String  login,String  password,String firstName,String lastName,String  phoneNumber,String  email,String address){
-        setId(user_id);
-        setLogin(login);
-        setPassword(password);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNum(phoneNumber);
-        setEmail(email);
-        setAddress(address);
+//    public Set<Student> getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(Set<Student> students) {
+//        this.students = students;
+//    }
+
+    public String getLogin() {
+        return login;
     }
 
-    public int getRoomID() {
-        return roomID;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

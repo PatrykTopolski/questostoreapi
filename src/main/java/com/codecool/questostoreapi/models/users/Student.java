@@ -3,85 +3,132 @@ package com.codecool.questostoreapi.models.users;
 import com.codecool.questostoreapi.models.items.Artifact;
 import com.codecool.questostoreapi.models.items.Quest;
 
+import javax.persistence.*;
 import java.util.List;
 
-public class Student extends User {
+@Entity
+@Table(name = "Student")
+@SecondaryTable(name = "student_personals")
+public class Student  {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private int amountOfCoins;
-    private int roomID;
-    private List<Quest> questList;
-    private List<Artifact> artifactList;
     private int lvlOfExp;
+    private String login;
+    private String password;
+    @Column(table = "student_personals")
+    private String firstName;
+    @Column(table = "student_personals")
+    private String lastName;
+    @Column(table = "student_personals")
+    private String phoneNum;
+    @Column(table = "student_personals")
+    private String email;
+    @Column(table = "student_personals")
+    private String address;
+    @ManyToMany(mappedBy = "students")
+    List<Artifact> artifacts;
 
-    public Student(int id, String login, String password, String firstName, String lastName, String phoneNum, String email, String address, String userType, int amountOfCoins, int roomID, List<Quest> questList, List<Artifact> artifactList, int lvlOfExp) {
-        super(id, login, password, firstName, lastName, phoneNum, email, address, userType);
+    public Student(){};
+
+    public void setArtifacts(List<Artifact> artifacts) { this.artifacts = artifacts; }
+
+    public List<Artifact> getArtifacts() { return artifacts; }
+
+    protected  Student() {
+    }
+
+    public Student(int amountOfCoins, int lvlOfExp, String login, String password, String firstName, String lastName, String phoneNum, String email, String address) {
         this.amountOfCoins = amountOfCoins;
-        this.roomID = roomID;
-        this.questList = questList;
         this.lvlOfExp = lvlOfExp;
-        this.artifactList = artifactList;
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNum = phoneNum;
+        this.email = email;
+        this.address = address;
     }
 
-    public Student(){}
-
-    public Student(String login, String password, String userType){
-        super(login, password, userType);
+    public int getId() {
+        return id;
     }
 
-    public Student(int userId, String login, String password, String name, String surname, String phone, String email,String adress){
-        setId(userId);
-        setLogin(login);
-        setPassword(password);
-        setFirstName(name);
-        setLastName(surname);
-        setPhoneNum(phone);
-        setEmail(email);
-        setAddress(adress);
-    };
-
-
-    public Student(int id, String login, String password, String userType) {
-        setId(id);
-        setLogin(login);
-        setPassword(password);
-        setUserType(userType);
-    }
-
-
-    public Student(int id, String firstName, String lastName, String phoneNum, String email, String address, int roomID) {
-        setId(id);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNum(phoneNum);
-        setEmail(email);
-        setAddress(address);
-        this.roomID = roomID;
-    }
-
-    public Student(int id, String login, String password, String firstName, String lastName, String phoneNumber, String email, String address, int classID, int experiencePoints, int coolcoins){
-        setId(id);
-        setLogin(login);
-        setPassword(password);
-        setPassword(password);
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNum(phoneNumber);
-        setEmail(email);
-        setAddress(address);
-        this.roomID = classID;
-        this.lvlOfExp = experiencePoints;
-        this.amountOfCoins = coolcoins;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getAmountOfCoins() {
         return amountOfCoins;
     }
 
-    public int getRoomID() {
-        return roomID;
+    public void setAmountOfCoins(int amountOfCoins) {
+        this.amountOfCoins = amountOfCoins;
     }
 
     public int getLvlOfExp() {
         return lvlOfExp;
+    }
+
+    public void setLvlOfExp(int lvlOfExp) {
+        this.lvlOfExp = lvlOfExp;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
