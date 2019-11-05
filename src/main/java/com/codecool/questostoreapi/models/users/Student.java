@@ -21,6 +21,14 @@ public class Student  {
     private String phoneNum;
     private String email;
     private String address;
+    @ManyToMany(mappedBy = "students")
+    List<Artifact> artifacts;
+
+    public Student(){};
+
+    public void setArtifacts(List<Artifact> artifacts) { this.artifacts = artifacts; }
+
+    public List<Artifact> getArtifacts() { return artifacts; }
 
     public int getId() {
         return id;
