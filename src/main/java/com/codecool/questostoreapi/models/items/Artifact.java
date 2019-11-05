@@ -13,12 +13,17 @@ public class Artifact {
     private int id;
     private String name;
     private String description;
-    private String category;
     private int price;
     @ManyToMany()
     private List<Student> students;
 
-    public Artifact() {}
+    protected Artifact() {}
+
+    public Artifact(String name, String description, int price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 
     public void setStudents(List<Student> students) {
         this.students = students;
@@ -36,10 +41,6 @@ public class Artifact {
         this.description = description;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -54,10 +55,6 @@ public class Artifact {
 
     public String getDescription() {
         return description;
-    }
-
-    public String getCategory() {
-        return category;
     }
 
     public int getPrice() {

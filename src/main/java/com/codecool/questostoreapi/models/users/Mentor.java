@@ -11,7 +11,7 @@ public class Mentor  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @OneToMany(mappedBy = "Mentor")
+    @OneToMany()
     private Set<Student> students;
     private String login;
     private String password;
@@ -25,6 +25,18 @@ public class Mentor  {
     private String email;
     @Column(table = "mentor_personals")
     private String address;
+
+    public Mentor(String login, String password, String firstName, String lastName, String phoneNum, String email, String address) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNum = phoneNum;
+        this.email = email;
+        this.address = address;
+    }
+
+    protected Mentor(){};
 
 
     public Mentor(Set<Student> students, String login, String password, String firstName, String lastName, String phoneNum, String email, String address) {
