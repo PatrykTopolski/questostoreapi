@@ -15,17 +15,12 @@ public class QuestostoreapiApplication {
         SpringApplication.run(QuestostoreapiApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner demo(MentorRepository mr, StudentRepository sr) {
-        return (args) -> {
-            // save a few customers
-            sr.save(new Student(50,5, "student", "student", "marek", "ziomek", "544032056", "student@student", "gdzies tam 15/4" ));
-
-            // fetch all customers
-
-
-
-
-        };
-    }
+//    @Bean
+//    public CommandLineRunner demo(MentorRepository mr, StudentRepository sr) {
+//        return (args) -> {
+//            // save a few customers
+//            sr.save(new Student(50,5, "student", "student", "marek", "ziomek", "544032056", "student@student", "gdzies tam 15/4" ));
+//            // fetch all customers
+//        };
+//    }
 }

@@ -10,15 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class ArtifactApi {
-    @Autowired
+public class ArtifactServiceREST {
+
     private ArtifactRepository artifactRepo;
 
-    @GetMapping("api/artifact")
+    public ArtifactServiceREST(ArtifactRepository artifactRepo){
+        this.artifactRepo = artifactRepo;
+    };
+
+    @GetMapping("/api/artifact")
     public List<Artifact> getAllArtifacts(){
-        return (List<Artifact>) artifactRepo.findAll();
+        return artifactRepo.findAll();
     }
-    @GetMapping("api/artifact/{artifactId}")
+
+    @GetMapping("/api/artifact/{artifactId}")
     public Artifact getArtifactById(@PathVariable String artifactId){
         return artifactRepo.getArtifactById(Integer.valueOf(artifactId));
     }

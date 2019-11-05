@@ -1,7 +1,7 @@
 package com.codecool.questostoreapi.repositories;
 
 import com.codecool.questostoreapi.models.users.Mentor;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MentorRepository extends CrudRepository<Mentor, Integer> {
+public interface MentorRepository extends JpaRepository<Mentor, Integer> {
 }
