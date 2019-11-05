@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "Student")
+@SecondaryTable(name = "Personals")
 public class Student  {
 
     @Id
@@ -16,10 +18,15 @@ public class Student  {
     private int lvlOfExp;
     private String login;
     private String password;
+    @Column(table = "Personals")
     private String firstName;
+    @Column(table = "Personals")
     private String lastName;
+    @Column(table = "Personals")
     private String phoneNum;
+    @Column(table = "Personals")
     private String email;
+    @Column(table = "Personals")
     private String address;
 
     public int getId() {
