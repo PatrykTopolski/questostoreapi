@@ -39,6 +39,17 @@ public class Mentor  {
     protected Mentor(){};
 
 
+    public Mentor(Set<Student> students, String login, String password, String firstName, String lastName, String phoneNum, String email, String address) {
+        this.students = students;
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNum = phoneNum;
+        this.email = email;
+        this.address = address;
+    }
+
     public int getId() {
         return id;
     }
