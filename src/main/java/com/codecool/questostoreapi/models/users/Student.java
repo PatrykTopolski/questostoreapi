@@ -28,6 +28,14 @@ public class Student  {
     private String email;
     @Column(table = "student_personals")
     private String address;
+    @ManyToMany(mappedBy = "students")
+    List<Artifact> artifacts;
+
+    public Student(){};
+
+    public void setArtifacts(List<Artifact> artifacts) { this.artifacts = artifacts; }
+
+    public List<Artifact> getArtifacts() { return artifacts; }
 
     protected  Student() {
     }
