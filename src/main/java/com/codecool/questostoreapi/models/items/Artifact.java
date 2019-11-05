@@ -1,9 +1,9 @@
 package com.codecool.questostoreapi.models.items;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.codecool.questostoreapi.models.users.Student;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Artifact {
@@ -15,8 +15,17 @@ public class Artifact {
     private String description;
     private String category;
     private int price;
+    @ManyToMany()
+    private List<Student> students;
 
-    public Artifact() {
+    public Artifact() {}
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     public void setName(String name) {
