@@ -2,11 +2,17 @@ package com.codecool.questostoreapi.service;
 
 import com.codecool.questostoreapi.models.items.Artifact;
 import com.codecool.questostoreapi.models.users.Mentor;
+import com.codecool.questostoreapi.models.users.Student;
 import com.codecool.questostoreapi.repositories.ArtifactRepository;
 import com.codecool.questostoreapi.repositories.MentorRepository;
 import com.codecool.questostoreapi.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Component
 public class InitializerBean {
@@ -17,10 +23,13 @@ public class InitializerBean {
     StudentRepository studentRepo;
     @Autowired
     MentorRepository mentorRepo;
+    @Autowired
+    StudentRepository sr;
 
     public InitializerBean(){
         createArtifacts();
         createMentor();
+        createStudents();
     }
 
     public void createArtifacts(){
@@ -42,4 +51,18 @@ public class InitializerBean {
         mentorRepo.save(new Mentor("AgaLogin", "haslo", "Agnieszka", "Jakas", "777-999-888", "agu@codecool.com", "ul. grodzak 5, kraków"));
         mentorRepo.save(new Mentor("RafałLogin", "haslo", "Rafał", "Niewiem", "666-999-888", "mrafał@codecool.com", "ul. grodzak 6, kraków"));
     };
+
+    public void createStudents(){
+        sr.save(new Student(50,5, "student", "student", "marek", "ziomek", "544032056", "student@student", "gdzies tam 15/4" ));
+        sr.save(new Student(43,3, "gdyrye", "hasło2", "kuba", "random", "456789123", "next@mail", "somewhere 58/1" ));
+        sr.save(new Student(76,1, "student10", "passowrd8", "gregory", "marier", "543876098", "random@mail", "bohemia 33/4" ));
+    }
+
+    private void getAllStudentsSet(){
+        List<Student> students = new ArrayList<>();
+        sr.findAll().forEach(students::add);
+        Set<Student> studentsSet = new HashSet<>(students);
+    }
+
+
 }
