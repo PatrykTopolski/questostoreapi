@@ -33,6 +33,11 @@ public class InitializerBean {
     }
 
     public void createMentor(){
-        mentorRepo.save(new Mentor("MarcinLogin", "haslo", "MArcin", "Izworski", "000-999-888", "marcin@codecool.com", "ul. grodzak 1, kraków"));
+        mentorRepo.save(new Mentor("MarcinLogin", "haslo", "Marcin", "Izworska", "000-999-888", "marcin@codecool.com", "ul. grodzak 1, kraków"));
+        mentorRepo.save(new Mentor("MateuszLogin", "haslo", "Mateusz", "Ostafi", "000-999-999", "mateusz@codecool.com", "ul. grodzak 2, kraków"));
+        mentorRepo.save(new Mentor("DominikLogin", "haslo", "Dominik", "Starzyki", "000-888-888", "dominik@codecool.com", "ul. grodzak 3, kraków"));
+        mentorRepo.save(new Mentor("PiotrLogin", "haslo", "Piotr", "Leniu", "999-999-888", "piotr@codecool.com", "ul. grodzak 4, kraków"));
+        mentorRepo.save(new Mentor("AgaLogin", "haslo", "Agnieszka", "Jakas", "777-999-888", "agu@codecool.com", "ul. grodzak 5, kraków"));
+        mentorRepo.save(new Mentor("RafałLogin", "haslo", "Rafał", "Niewiem", "666-999-888", "mrafał@codecool.com", "ul. grodzak 6, kraków"));
     };
 }
