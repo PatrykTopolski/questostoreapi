@@ -1,28 +1,37 @@
 package com.codecool.questostoreapi.models.items;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Artifact {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String description;
     private String category;
     private int price;
-    private boolean availability;
 
-    public Artifact(int id, String name, String description, String category, int price, boolean availability) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.price = price;
-        this.availability = availability;
+    public Artifact() {
     }
 
-
-    public Artifact(int id, String name, String category, int price, String description){
-        this.id = id;
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -46,7 +55,4 @@ public class Artifact {
         return price;
     }
 
-    public boolean isAvailability() {
-        return availability;
-    }
 }
