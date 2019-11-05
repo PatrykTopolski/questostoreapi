@@ -26,6 +26,17 @@ public class Mentor  {
     @Column(table = "mentor_personals")
     private String address;
 
+    public Mentor(String password, String firstName, String lastName, String phoneNum, String email, String address) {
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNum = phoneNum;
+        this.email = email;
+        this.address = address;
+    }
+
+    protected Mentor(){};
+
 
     public int getId() {
         return id;
