@@ -26,7 +26,8 @@ public class Mentor  {
     @Column(table = "mentor_personals")
     private String address;
 
-    public Mentor(String password, String firstName, String lastName, String phoneNum, String email, String address) {
+    public Mentor(String login, String password, String firstName, String lastName, String phoneNum, String email, String address) {
+        this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;

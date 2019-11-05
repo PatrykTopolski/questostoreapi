@@ -1,6 +1,7 @@
 package com.codecool.questostoreapi.service;
 
 import com.codecool.questostoreapi.models.items.Artifact;
+import com.codecool.questostoreapi.models.users.Mentor;
 import com.codecool.questostoreapi.repositories.ArtifactRepository;
 import com.codecool.questostoreapi.repositories.MentorRepository;
 import com.codecool.questostoreapi.repositories.StudentRepository;
@@ -31,5 +32,7 @@ public class InitializerBean {
         artifactRepo.save(new Artifact("Teleport","The whole course goes to an off-school program instead for a day", 221));
     }
 
-    public void createMentor(){};
+    public void createMentor(){
+        mentorRepo.save(new Mentor("MarcinLogin", "haslo", "MArcin", "Izworski", "000-999-888", "marcin@codecool.com", "ul. grodzak 1, kraków"));
+    };
 }
