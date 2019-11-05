@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Student")
-@SecondaryTable(name = "Personals")
+@SecondaryTable(name = "student_personals")
 public class Student  {
 
     @Id
@@ -18,16 +18,31 @@ public class Student  {
     private int lvlOfExp;
     private String login;
     private String password;
-    @Column(table = "Personals")
+    @Column(table = "student_personals")
     private String firstName;
-    @Column(table = "Personals")
+    @Column(table = "student_personals")
     private String lastName;
-    @Column(table = "Personals")
+    @Column(table = "student_personals")
     private String phoneNum;
-    @Column(table = "Personals")
+    @Column(table = "student_personals")
     private String email;
-    @Column(table = "Personals")
+    @Column(table = "student_personals")
     private String address;
+
+    protected  Student() {
+    }
+
+    public Student(int amountOfCoins, int lvlOfExp, String login, String password, String firstName, String lastName, String phoneNum, String email, String address) {
+        this.amountOfCoins = amountOfCoins;
+        this.lvlOfExp = lvlOfExp;
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNum = phoneNum;
+        this.email = email;
+        this.address = address;
+    }
 
     public int getId() {
         return id;

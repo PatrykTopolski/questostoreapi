@@ -1,5 +1,6 @@
 package com.codecool.questostoreapi.models.items;
 
+
 public class Quest {
 
     private int id;
