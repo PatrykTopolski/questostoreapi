@@ -1,11 +1,12 @@
 package com.codecool.questostoreapi.models.users;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
+// two tables one c.. entity : example
+@Entity
+@Table(name = "Mentor")
+@SecondaryTable(name = "Personals")
 public class Mentor  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,10 +15,15 @@ public class Mentor  {
     private Set<Student> students;
     private String login;
     private String password;
+    @Column(table = "Personals")
     private String firstName;
+    @Column(table = "Personals")
     private String lastName;
+    @Column(table = "Personals")
     private String phoneNum;
+    @Column(table = "Personals")
     private String email;
+    @Column(table = "Personals")
     private String address;
 
 
