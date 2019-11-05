@@ -19,6 +19,8 @@ public class InitializerBean {
     MentorRepository mentorRepo;
 
     public InitializerBean(){
+        createArtifacts();
+        createMentor();
     }
 
     public void createArtifacts(){
