@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 public class ArtifactServiceREST {
-
+    @Autowired
     private ArtifactRepository artifactRepo;
 
-    public ArtifactServiceREST(ArtifactRepository artifactRepo){
-        this.artifactRepo = artifactRepo;
-    };
+//    public ArtifactServiceREST(ArtifactRepository artifactRepo){
+//        this.artifactRepo = artifactRepo;
+//    };
 
     @GetMapping("/api/artifact")
     public List<Artifact> getAllArtifacts(){
