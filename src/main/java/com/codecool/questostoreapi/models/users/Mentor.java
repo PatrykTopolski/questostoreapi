@@ -11,8 +11,8 @@ public class Mentor  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-//    @OneToMany(mappedBy = "Mentor")
-//    private Set<Student> students;
+    @OneToMany()
+    private Set<Student> students;
     private String login;
     private String password;
     @Column(table = "mentor_personals")
@@ -47,13 +47,13 @@ public class Mentor  {
         this.id = id;
     }
 
-//    public Set<Student> getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(Set<Student> students) {
-//        this.students = students;
-//    }
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 
     public String getLogin() {
         return login;
