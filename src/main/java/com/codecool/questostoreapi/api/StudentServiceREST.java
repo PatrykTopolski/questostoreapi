@@ -2,12 +2,14 @@ package com.codecool.questostoreapi.api;
 
 import com.codecool.questostoreapi.models.users.Student;
 import com.codecool.questostoreapi.repositories.StudentRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
+@Validated
 public class StudentServiceREST {
 
     private final StudentRepository studentRepository;
@@ -17,6 +19,7 @@ public class StudentServiceREST {
     }
 
     @GetMapping("/api/students")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<Student> getAllStudents(){
         return studentRepository.findAll();
     }
@@ -43,7 +46,8 @@ public class StudentServiceREST {
                     return studentRepository.save(newStudent);
                 });
     }
-    @DeleteMapping("/employees/{id}")
+
+    @DeleteMapping("/api/students/{id}")
     void deleteById(@PathVariable int id) {
         studentRepository.deleteById(id);
     }
