@@ -1,9 +1,11 @@
 package com.codecool.questostoreapi.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.codecool.questostoreapi.models.items.Artifact;
 
-public interface ArtifactRepository extends CrudRepository<Artifact, Integer> {
+public interface ArtifactRepository extends JpaRepository<Artifact, Integer> {
+
+    public Artifact getArtifactById(int id);
 
 
 }
