@@ -2,6 +2,7 @@ package com.codecool.questostoreapi.api;
 
 import com.codecool.questostoreapi.models.items.Artifact;
 import com.codecool.questostoreapi.repositories.ArtifactRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -10,9 +11,12 @@ import java.util.List;
 public class ArtifactServiceREST {
     @Autowired
     private ArtifactRepository artifactRepo;
+    private Logger logger = Logger.getLogger(ArtifactServiceREST.class.getName());
 
     @GetMapping("/api/artifact")
     public List<Artifact> getAllArtifacts(){
+        logger.info("get artifact request");
+        logger.error("error in get artifact");
         return artifactRepo.findAll();
     }
 
