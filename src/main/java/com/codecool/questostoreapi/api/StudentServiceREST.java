@@ -43,4 +43,8 @@ public class StudentServiceREST {
                     return studentRepository.save(newStudent);
                 });
     }
+    @DeleteMapping("/employees/{id}")
+    void deleteById(@PathVariable int id) {
+        studentRepository.deleteById(id);
+    }
 }
