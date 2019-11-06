@@ -1,8 +1,6 @@
 package com.codecool.questostoreapi.models.users;
 
 import com.codecool.questostoreapi.models.items.Artifact;
-import com.codecool.questostoreapi.models.items.Quest;
-
 import javax.persistence.*;
 import java.util.List;
 
