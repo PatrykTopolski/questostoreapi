@@ -27,6 +27,7 @@ public class Student  {
     @Column(table = "student_personals")
     private String address;
     @ManyToMany(mappedBy = "students")
+    private
     List<Artifact> artifacts;
 
 
