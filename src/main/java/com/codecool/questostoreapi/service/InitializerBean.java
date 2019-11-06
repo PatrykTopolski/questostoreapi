@@ -29,7 +29,7 @@ public class InitializerBean {
         mentorRepo.save(new Mentor("AgaLogin", "haslo", "Agnieszka", "Jakas", "777-999-888", "agu@codecool.com", "ul. grodzak 5, kraków"));
         mentorRepo.save(new Mentor("RafałLogin", "haslo", "Rafał", "Niewiem", "666-999-888", "mrafał@codecool.com", "ul. grodzak 6, kraków"));
         studentRepo.save(new Student(50,5, "student", "student", "marek", "ziomek", "544032056", "student@student", "gdzies tam 15/4" ));
-        studentRepo.save(new Student(43,3, "gdyrye", "hasło2", "kuba", "random", "456789123", "next@mail", "somewhere 58/1" ));
+        studentRepo.save(new Student(43,3, "gdyrye", "haslo", "kuba", "random", "456789123", "next@mail", "somewhere 58/1" ));
         studentRepo.save(new Student(76,1, "student10", "passowrd8", "gregory", "marier", "543876098", "random@mail", "bohemia 33/4" ));
 
     }
