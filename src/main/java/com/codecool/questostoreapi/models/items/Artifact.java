@@ -25,6 +25,8 @@ public class Artifact {
         this.price = price;
     }
 
+    public void setId(int id) { this.id = id; }
+
     public void setStudents(List<Student> students) {
         this.students = students;
     }
