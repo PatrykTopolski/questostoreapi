@@ -19,7 +19,7 @@ public class MentorServiceREST {
     }
 
     @GetMapping("/api/mentor/{mentorId}")
-    public Mentor getMentorById(@PathVariable String mentorId){
+    Mentor getMentorById(@PathVariable String mentorId){
         return repository.getById(Integer.parseInt(mentorId));
     }
 
@@ -31,5 +31,25 @@ public class MentorServiceREST {
     @DeleteMapping("/api/mentor/{id}")
     void deleteById(@PathVariable int id){
         repository.deleteById(id);
+    }
+
+    @PutMapping("/api/mentor/{id}")
+    Mentor updateMentor(@RequestBody Mentor updatedMentor, @PathVariable int id){
+        return repository.findById(id)
+                .map(mentor -> {
+                    mentor.setFirstName(updatedMentor.getFirstName());
+                    mentor.setLastName(updatedMentor.getLastName());
+                    mentor.setLogin(updatedMentor.getLogin());
+                    mentor.setPassword(updatedMentor.getPassword());
+                    mentor.setAddress(updatedMentor.getAddress());
+                    mentor.setEmail(updatedMentor.getEmail());
+                    mentor.setPhoneNum(updatedMentor.getPhoneNum());
+                    return repository.save(mentor);
+                })
+                .orElseGet(()->{
+                    updatedMentor.setId(id);
+                    return repository.save(updatedMentor);
+                });
+
     }
 }
