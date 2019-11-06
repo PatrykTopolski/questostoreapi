@@ -34,4 +34,9 @@ public class ArtifactServiceREST {
         return artifactRepo.save(newArtifact);
         }
 
+    @DeleteMapping("/api/artifact/{id}")
+    void deleteArtifact(@PathVariable int id){
+        artifactRepo.deleteById(id);
+        }
+
 }
