@@ -14,9 +14,6 @@ public class ArtifactServiceREST {
     @Autowired
     private ArtifactRepository artifactRepo;
 
-//    public ArtifactServiceREST(ArtifactRepository artifactRepo){
-//        this.artifactRepo = artifactRepo;
-//    };
 
     @GetMapping("/api/artifact")
     public List<Artifact> getAllArtifacts(){
@@ -25,6 +22,6 @@ public class ArtifactServiceREST {
 
     @GetMapping("/api/artifact/{artifactId}")
     public Artifact getArtifactById(@PathVariable String artifactId){
-        return artifactRepo.getArtifactById(Integer.valueOf(artifactId));
+        return artifactRepo.getArtifactById(Integer.parseInt(artifactId));
     }
 }
