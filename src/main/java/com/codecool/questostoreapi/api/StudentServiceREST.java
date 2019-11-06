@@ -24,7 +24,7 @@ public class StudentServiceREST {
     Student postStudent(@RequestBody Student student){
         return  studentRepository.save(student);
     }
-    @PutMapping("/api/students")
+    @PutMapping("/api/students/{id}")
     Student putStudent(@RequestBody Student newStudent, @PathVariable Integer id){
         return studentRepository.findById(id).map(student -> {
             student.setAddress(newStudent.getAddress());
