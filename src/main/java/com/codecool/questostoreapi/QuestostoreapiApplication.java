@@ -8,6 +8,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @SpringBootApplication
 public class QuestostoreapiApplication {
 
@@ -23,4 +28,5 @@ public class QuestostoreapiApplication {
 //            // fetch all customers
 //        };
 //    }
+
 }
