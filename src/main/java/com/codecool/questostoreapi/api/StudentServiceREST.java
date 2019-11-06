@@ -19,6 +19,7 @@ public class StudentServiceREST {
     }
 
     @GetMapping("/api/students")
+    //example of another way to handle config security
     @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<Student> getAllStudents(){
         return studentRepository.findAll();

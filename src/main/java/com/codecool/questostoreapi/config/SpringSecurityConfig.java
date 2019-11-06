@@ -22,18 +22,22 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        http
-//                //HTTP Basic authentication
-//                .httpBasic()
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers(HttpMethod.PUT, "/api/artifact").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.DELETE, "/api/students/*").hasRole("ADMIN")
-//                .and()
-//                .csrf().disable()
-//                .formLogin().disable();
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http
+                //HTTP Basic authentication
+                .httpBasic()
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN")
+
+                .and()
+                .csrf().disable()
+                .formLogin().disable();
+    }
 }
