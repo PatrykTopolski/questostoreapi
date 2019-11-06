@@ -3,16 +3,21 @@ package com.codecool.questostoreapi.api;
 import com.codecool.questostoreapi.models.items.Artifact;
 import com.codecool.questostoreapi.repositories.ArtifactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 public class ArtifactServiceREST {
-    @Autowired
+
     private ArtifactRepository artifactRepo;
+
+    ArtifactServiceREST(ArtifactRepository artifactRepo){
+        this.artifactRepo = artifactRepo;
+    }
 
 
     @GetMapping("/api/artifact")
@@ -24,4 +29,14 @@ public class ArtifactServiceREST {
     public Artifact getArtifactById(@PathVariable String artifactId){
         return artifactRepo.getArtifactById(Integer.parseInt(artifactId));
     }
+
+//    @PostMapping("api/artifact")
+//    public ResponseEntity<Void> addNewArtifact(@RequestBody Artifact newArtifact){
+//        Artifact artifact = artifactRepo.add(newArtifact);
+//        if(newArtifact==null)
+//            return ResponseEntity.noContent().build();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}")
+//                .buildAndExpand(artifact.getId()).toUri();
+//        return ResponseEntity.created(location).build();
+//    }
 }
