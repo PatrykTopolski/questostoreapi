@@ -11,7 +11,7 @@ import java.util.List;
 public class ArtifactController {
     @Autowired
     private ArtifactRepository artifactRepo;
-    private Logger logger = Logger.getLogger(ArtifactServiceREST.class.getName());
+    private Logger logger = Logger.getLogger(ArtifactController.class.getName());
 
     @GetMapping("/api/artifact")
     public List<Artifact> getAllArtifacts(){

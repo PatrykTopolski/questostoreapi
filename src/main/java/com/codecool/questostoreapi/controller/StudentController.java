@@ -2,6 +2,7 @@ package com.codecool.questostoreapi.controller;
 
 import com.codecool.questostoreapi.models.users.Student;
 import com.codecool.questostoreapi.repositories.StudentRepository;
+import org.apache.log4j.Logger;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ public class StudentController {
 
     private final StudentRepository studentRepository;
 
+    private Logger logger = Logger.getLogger(StudentController.class.getName());
+
     public StudentController(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
@@ -22,14 +25,17 @@ public class StudentController {
     //example of another way to handle config security
 //    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<Student> getAllStudents(){
+        logger.info("get Students request");
         return studentRepository.findAll();
     }
     @PostMapping()
     Student postStudent(@RequestBody Student student){
+        logger.info("post student request");
         return  studentRepository.save(student);
     }
     @PutMapping( value = "/{id}")
     Student putStudent(@RequestBody Student newStudent, @PathVariable Integer id){
+        logger.info("put student request");
         return studentRepository.findById(id).map(student -> {
             student.setAddress(newStudent.getAddress());
             student.setAmountOfCoins(newStudent.getAmountOfCoins());
@@ -50,6 +56,7 @@ public class StudentController {
 
     @DeleteMapping(value = "/{id}")
     void deleteById(@PathVariable int id) {
+        logger.info("delete student request");
         studentRepository.deleteById(id);
     }
 }

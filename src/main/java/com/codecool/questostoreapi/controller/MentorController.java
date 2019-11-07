@@ -13,7 +13,7 @@ public class MentorController {
     @Autowired
     private MentorRepository repository;
 
-    private Logger logger = Logger.getLogger(MentorServiceREST.class.getName());
+    private Logger logger = Logger.getLogger(MentorController.class.getName());
 
     @GetMapping("/api/mentor")
     public List<Mentor> getAllMentors(){
