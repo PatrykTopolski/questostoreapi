@@ -45,7 +45,6 @@ public class ArtifactController {
                 artifact.setName(updatedArtif.getName());
                 artifact.setDescription(updatedArtif.getDescription());
                 artifact.setPrice(updatedArtif.getPrice());
-                artifact.setStudents(updatedArtif.getStudents());
                 return artifactRepo.save(artifact);
                 })
                 .orElseGet(()->{

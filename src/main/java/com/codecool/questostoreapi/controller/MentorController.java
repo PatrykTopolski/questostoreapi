@@ -54,7 +54,7 @@ public class MentorController {
                     mentor.setAddress(updatedMentor.getAddress());
                     mentor.setEmail(updatedMentor.getEmail());
                     mentor.setPhoneNum(updatedMentor.getPhoneNum());
-                    mentor.setStudents(repository.getStudentsFromList(request));
+                    mentor.setStudents(updatedMentor.getStudents());
                     return repository.save(mentor);
                 })
                 .orElseGet(()->{
