@@ -1,8 +1,7 @@
-package com.codecool.questostoreapi.api;
+package com.codecool.questostoreapi.controller;
 
 import com.codecool.questostoreapi.models.users.Student;
 import com.codecool.questostoreapi.repositories.StudentRepository;
-import org.apache.log4j.Logger;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -10,31 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Validated
-public class StudentServiceREST {
+@RequestMapping("/api/students")
+public class StudentController {
 
     private final StudentRepository studentRepository;
-    private Logger logger = Logger.getLogger(StudentServiceREST.class.getName());
 
-    public StudentServiceREST(StudentRepository studentRepository) {
+    public StudentController(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
-    @GetMapping("/api/students")
+    @GetMapping()
     //example of another way to handle config security
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<Student> getAllStudents(){
-        logger.info("get students request");
         return studentRepository.findAll();
     }
-    @PostMapping("/api/students")
-    Student postStudent(@RequestBody Student student)
-    {   logger.info("post student request");
+    @PostMapping()
+    Student postStudent(@RequestBody Student student){
         return  studentRepository.save(student);
     }
-    @PutMapping("/api/students/{id}")
+    @PutMapping( value = "/{id}")
     Student putStudent(@RequestBody Student newStudent, @PathVariable Integer id){
-        logger.info("put student request");
         return studentRepository.findById(id).map(student -> {
             student.setAddress(newStudent.getAddress());
             student.setAmountOfCoins(newStudent.getAmountOfCoins());
@@ -53,9 +48,8 @@ public class StudentServiceREST {
                 });
     }
 
-    @DeleteMapping("/api/students/{id}")
-    void deleteById(@PathVariable int id)
-    {   logger.info("delete student request");
+    @DeleteMapping(value = "/{id}")
+    void deleteById(@PathVariable int id) {
         studentRepository.deleteById(id);
     }
 }

@@ -1,4 +1,4 @@
-package com.codecool.questostoreapi.api;
+package com.codecool.questostoreapi.controller;
 
 import com.codecool.questostoreapi.models.users.Mentor;
 import com.codecool.questostoreapi.repositories.MentorRepository;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class MentorServiceREST {
+public class MentorController {
     @Autowired
     private MentorRepository repository;
 
