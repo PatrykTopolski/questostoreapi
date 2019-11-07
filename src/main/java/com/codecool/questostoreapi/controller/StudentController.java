@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Validated
+@RequestMapping("/api/students")
 public class StudentController {
 
     private final StudentRepository studentRepository;
@@ -18,17 +18,17 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
-    @GetMapping("/api/students")
+    @GetMapping()
     //example of another way to handle config security
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     List<Student> getAllStudents(){
         return studentRepository.findAll();
     }
-    @PostMapping("/api/students")
+    @PostMapping()
     Student postStudent(@RequestBody Student student){
         return  studentRepository.save(student);
     }
-    @PutMapping("/api/students/{id}")
+    @PutMapping( value = "/{id}")
     Student putStudent(@RequestBody Student newStudent, @PathVariable Integer id){
         return studentRepository.findById(id).map(student -> {
             student.setAddress(newStudent.getAddress());
@@ -48,7 +48,7 @@ public class StudentController {
                 });
     }
 
-    @DeleteMapping("/api/students/{id}")
+    @DeleteMapping(value = "/{id}")
     void deleteById(@PathVariable int id) {
         studentRepository.deleteById(id);
     }
