@@ -1,4 +1,4 @@
-package com.codecool.questostoreapi.api;
+package com.codecool.questostoreapi.controller;
 
 import com.codecool.questostoreapi.models.users.Student;
 import com.codecool.questostoreapi.repositories.StudentRepository;
@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 @Validated
-public class StudentServiceREST {
+public class StudentController {
 
     private final StudentRepository studentRepository;
     private Logger logger = Logger.getLogger(StudentServiceREST.class.getName());
 
-    public StudentServiceREST(StudentRepository studentRepository) {
+    public StudentController(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 

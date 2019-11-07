@@ -1,4 +1,4 @@
-package com.codecool.questostoreapi.api;
+package com.codecool.questostoreapi.controller;
 
 import com.codecool.questostoreapi.models.items.Artifact;
 import com.codecool.questostoreapi.repositories.ArtifactRepository;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ArtifactServiceREST {
+public class ArtifactController {
     @Autowired
     private ArtifactRepository artifactRepo;
     private Logger logger = Logger.getLogger(ArtifactServiceREST.class.getName());
