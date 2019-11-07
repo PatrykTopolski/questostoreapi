@@ -16,27 +16,30 @@ public class ArtifactServiceREST {
     @GetMapping("/api/artifact")
     public List<Artifact> getAllArtifacts(){
         logger.info("get artifact request");
-        logger.error("error in get artifact");
         return artifactRepo.findAll();
     }
 
     @GetMapping("/api/artifact/{artifactId}")
     public Artifact getArtifactById(@PathVariable String artifactId){
+        logger.info("get artifact request");
         return artifactRepo.getArtifactById(Integer.parseInt(artifactId));
     }
 
     @PostMapping("api/artifact")
-    Artifact newArtifact(@RequestBody Artifact newArtifact){
+    Artifact newArtifact(@RequestBody Artifact newArtifact) {
+        logger.info("post artifact request");
         return artifactRepo.save(newArtifact);
-        }
+    }
 
     @DeleteMapping("/api/artifact/{id}")
     void deleteArtifact(@PathVariable int id){
+        logger.info("delete artifact request");
         artifactRepo.deleteById(id);
-        }
+    }
 
     @PutMapping("/api/artifact/{id}")
     Artifact updateArtifact(@RequestBody Artifact updatedArtif, @PathVariable int id){
+        logger.info("put artifact request");
         return artifactRepo.findById(id)
                 .map(artifact -> {
                 artifact.setName(updatedArtif.getName());
@@ -49,7 +52,6 @@ public class ArtifactServiceREST {
                     updatedArtif.setId(id);
                     return artifactRepo.save(updatedArtif);
                 });
-
-        }
+    }
 
 }
