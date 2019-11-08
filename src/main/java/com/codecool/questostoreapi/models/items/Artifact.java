@@ -1,10 +1,6 @@
 package com.codecool.questostoreapi.models.items;
 
-import com.codecool.questostoreapi.models.users.Student;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Artifact {
@@ -25,7 +21,6 @@ public class Artifact {
     }
 
     public void setId(int id) { this.id = id; }
-
 
     public void setName(String name) {
         this.name = name;

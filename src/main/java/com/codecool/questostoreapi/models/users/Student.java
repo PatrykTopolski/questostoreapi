@@ -2,7 +2,6 @@ package com.codecool.questostoreapi.models.users;
 
 import com.codecool.questostoreapi.models.items.Artifact;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,13 +26,8 @@ public class Student  {
     private String email;
     @Column(table = "student_personals")
     private String address;
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
+    @ManyToMany
     private List<Artifact> artifacts;
-
 
     public void setArtifacts(List<Artifact> artifacts) { this.artifacts = artifacts; }
 
