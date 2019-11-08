@@ -26,10 +26,8 @@ public class Student  {
     private String email;
     @Column(table = "student_personals")
     private String address;
-    @ManyToMany(mappedBy = "students")
-    private
-    List<Artifact> artifacts;
-
+    @ManyToMany
+    private List<Artifact> artifacts;
 
     public void setArtifacts(List<Artifact> artifacts) { this.artifacts = artifacts; }
 
@@ -50,6 +48,9 @@ public class Student  {
         this.address = address;
     }
 
+    public void addArtifact(Artifact artifact){
+        artifacts.add(artifact);
+    }
     public int getId() {
         return id;
     }

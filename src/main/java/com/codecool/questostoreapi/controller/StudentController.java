@@ -1,10 +1,9 @@
 package com.codecool.questostoreapi.controller;
 
+import com.codecool.questostoreapi.models.items.Artifact;
 import com.codecool.questostoreapi.models.users.Student;
 import com.codecool.questostoreapi.repositories.StudentRepository;
 import org.apache.log4j.Logger;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +13,6 @@ import java.util.List;
 public class StudentController {
 
     private final StudentRepository studentRepository;
-
     private Logger logger = Logger.getLogger(StudentController.class.getName());
 
     public StudentController(StudentRepository studentRepository) {
@@ -39,7 +37,6 @@ public class StudentController {
         return studentRepository.findById(id).map(student -> {
             student.setAddress(newStudent.getAddress());
             student.setAmountOfCoins(newStudent.getAmountOfCoins());
-            student.setArtifacts(newStudent.getArtifacts());
             student.setEmail(newStudent.getEmail());
             student.setFirstName(newStudent.getFirstName());
             student.setLastName(newStudent.getLastName());
@@ -47,7 +44,10 @@ public class StudentController {
             student.setPassword(newStudent.getPassword());
             student.setPhoneNum(newStudent.getPhoneNum());
             student.setLvlOfExp(newStudent.getLvlOfExp());
-        return studentRepository.save(student);})
+            List<Artifact> artifacts = newStudent.getArtifacts();
+            student.setArtifacts(artifacts);
+        return studentRepository.save(student);
+        })
                 .orElseGet(() -> {
                     newStudent.setId(id);
                     return studentRepository.save(newStudent);

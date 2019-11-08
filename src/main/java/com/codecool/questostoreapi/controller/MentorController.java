@@ -6,12 +6,15 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
 public class MentorController {
     @Autowired
     private MentorRepository repository;
+    @Autowired
+    private HttpServletRequest request;
 
     private Logger logger = Logger.getLogger(MentorController.class.getName());
 
@@ -51,6 +54,7 @@ public class MentorController {
                     mentor.setAddress(updatedMentor.getAddress());
                     mentor.setEmail(updatedMentor.getEmail());
                     mentor.setPhoneNum(updatedMentor.getPhoneNum());
+                    mentor.setStudents(updatedMentor.getStudents());
                     return repository.save(mentor);
                 })
                 .orElseGet(()->{

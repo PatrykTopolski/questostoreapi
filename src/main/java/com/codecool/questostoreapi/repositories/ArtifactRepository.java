@@ -7,5 +7,4 @@ public interface ArtifactRepository extends JpaRepository<Artifact, Integer> {
 
     public Artifact getArtifactById(Integer id);
 
-
 }
