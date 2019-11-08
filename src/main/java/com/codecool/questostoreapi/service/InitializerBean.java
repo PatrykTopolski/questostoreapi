@@ -8,7 +8,6 @@ import com.codecool.questostoreapi.repositories.MentorRepository;
 import com.codecool.questostoreapi.repositories.StudentRepository;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class InitializerBean {
 

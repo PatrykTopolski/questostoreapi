@@ -6,3 +6,7 @@
 2019-11-08 09:52:30 INFO  ArtifactController:25 - get artifact request
 2019-11-08 09:52:54 INFO  StudentController:26 - get Students request
 2019-11-08 09:53:49 INFO  StudentController:36 - put student request
+2019-11-08 10:07:47 INFO  StudentController:26 - get Students request
+2019-11-08 10:08:05 INFO  ArtifactController:19 - get artifact request
+2019-11-08 10:08:43 INFO  ArtifactController:19 - get artifact request
+2019-11-08 10:08:53 INFO  MentorController:24 - get mentors request
