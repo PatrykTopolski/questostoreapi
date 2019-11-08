@@ -1,8 +1,6 @@
 package com.codecool.questostoreapi.models.users;
 
 import com.codecool.questostoreapi.models.items.Artifact;
-import com.codecool.questostoreapi.models.items.Quest;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -28,9 +26,8 @@ public class Student  {
     private String email;
     @Column(table = "student_personals")
     private String address;
-    @ManyToMany(mappedBy = "students")
-    List<Artifact> artifacts;
-
+    @ManyToMany
+    private List<Artifact> artifacts;
 
     public void setArtifacts(List<Artifact> artifacts) { this.artifacts = artifacts; }
 
@@ -51,6 +48,9 @@ public class Student  {
         this.address = address;
     }
 
+    public void addArtifact(Artifact artifact){
+        artifacts.add(artifact);
+    }
     public int getId() {
         return id;
     }

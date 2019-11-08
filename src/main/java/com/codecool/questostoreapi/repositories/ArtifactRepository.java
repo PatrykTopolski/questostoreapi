@@ -5,7 +5,6 @@ import com.codecool.questostoreapi.models.items.Artifact;
 
 public interface ArtifactRepository extends JpaRepository<Artifact, Integer> {
 
-    public Artifact getArtifactById(int id);
-
+    public Artifact getArtifactById(Integer id);
 
 }

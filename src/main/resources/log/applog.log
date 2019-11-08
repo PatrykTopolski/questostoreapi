@@ -1,0 +1,12 @@
+2019-11-07 10:54:00 INFO  StudentController:28 - get Students request
+2019-11-07 13:14:03 INFO  StudentController:28 - get Students request
+2019-11-08 09:51:43 INFO  MentorController:30 - get mentor request
+2019-11-08 09:52:15 INFO  MentorController:24 - get mentors request
+2019-11-08 09:52:23 INFO  ArtifactController:19 - get artifact request
+2019-11-08 09:52:30 INFO  ArtifactController:25 - get artifact request
+2019-11-08 09:52:54 INFO  StudentController:26 - get Students request
+2019-11-08 09:53:49 INFO  StudentController:36 - put student request
+2019-11-08 10:07:47 INFO  StudentController:26 - get Students request
+2019-11-08 10:08:05 INFO  ArtifactController:19 - get artifact request
+2019-11-08 10:08:43 INFO  ArtifactController:19 - get artifact request
+2019-11-08 10:08:53 INFO  MentorController:24 - get mentors request
