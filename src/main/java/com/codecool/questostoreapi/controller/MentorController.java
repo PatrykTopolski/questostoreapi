@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/mentor")
 public class MentorController {
     @Autowired
     private MentorRepository repository;
@@ -18,31 +19,31 @@ public class MentorController {
 
     private Logger logger = Logger.getLogger(MentorController.class.getName());
 
-    @GetMapping("/api/mentor")
+    @GetMapping()
     public List<Mentor> getAllMentors(){
         logger.info("get mentors request");
         return repository.findAll();
     }
 
-    @GetMapping("/api/mentor/{mentorId}")
+    @GetMapping(value = "/{mentorId}")
     Mentor getMentorById(@PathVariable String mentorId)
     {   logger.info("get mentor request");
         return repository.getById(Integer.parseInt(mentorId));
     }
 
-    @PostMapping("api/mentor")
+    @PostMapping()
     Mentor newMentor(@RequestBody Mentor newMentor){
         logger.info("post mentor request");
         return repository.save(newMentor);
     }
 
-    @DeleteMapping("/api/mentor/{id}")
+    @DeleteMapping(value = "/{id}")
     void deleteById(@PathVariable int id){
         logger.info("delete mentor request");
         repository.deleteById(id);
     }
 
-    @PutMapping("/api/mentor/{id}")
+    @PutMapping(value = "/{id}")
     Mentor updateMentor(@RequestBody Mentor updatedMentor, @PathVariable int id){
         logger.info("put mentor request");
         return repository.findById(id)

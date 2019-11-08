@@ -8,36 +8,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/artifact")
 public class ArtifactController {
     @Autowired
     private ArtifactRepository artifactRepo;
     private Logger logger = Logger.getLogger(ArtifactController.class.getName());
 
-    @GetMapping("/api/artifact")
+    @GetMapping()
     public List<Artifact> getAllArtifacts(){
         logger.info("get artifact request");
         return artifactRepo.findAll();
     }
 
-    @GetMapping("/api/artifact/{artifactId}")
+    @GetMapping(value = "/{artifactId}")
     public Artifact getArtifactById(@PathVariable String artifactId){
         logger.info("get artifact request");
         return artifactRepo.getArtifactById(Integer.parseInt(artifactId));
     }
 
-    @PostMapping("api/artifact")
+    @PostMapping()
     Artifact newArtifact(@RequestBody Artifact newArtifact) {
         logger.info("post artifact request");
         return artifactRepo.save(newArtifact);
     }
 
-    @DeleteMapping("/api/artifact/{id}")
+    @DeleteMapping(value = "/{id}")
     void deleteArtifact(@PathVariable int id){
         logger.info("delete artifact request");
         artifactRepo.deleteById(id);
     }
 
-    @PutMapping("/api/artifact/{id}")
+    @PutMapping(value = "/{id}")
     Artifact updateArtifact(@RequestBody Artifact updatedArtif, @PathVariable int id){
         logger.info("put artifact request");
         return artifactRepo.findById(id)
