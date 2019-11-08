@@ -31,6 +31,7 @@ public class StudentController {
         logger.info("post student request");
         return  studentRepository.save(student);
     }
+
     @PutMapping( value = "/{id}")
     Student putStudent(@RequestBody Student newStudent, @PathVariable Integer id){
         logger.info("put student request");
