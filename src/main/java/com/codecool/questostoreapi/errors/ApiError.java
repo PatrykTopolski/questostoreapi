@@ -35,4 +35,9 @@ public class ApiError {
         this.message = message;
         this.debugMessage = ex.getLocalizedMessage();
     }
+
+    public HttpStatus getStatus() {
+        return status;
+    }
+
 }
