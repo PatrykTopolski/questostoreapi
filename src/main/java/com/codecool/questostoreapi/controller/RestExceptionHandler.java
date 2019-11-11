@@ -9,11 +9,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
-@Order(Ordered.HIGHEST_PRECEDENCE)
-@ControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(javax.persistence.EntityNotFoundException.class)
+@ControllerAdvice
+public class RestExceptionHandler extends RuntimeException {
+
+    @ExceptionHandler()
     protected ResponseEntity<Object> handleEntityNotFound(javax.persistence.EntityNotFoundException ex) {
         String message  = "Resource not found";
         return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, message, ex));
