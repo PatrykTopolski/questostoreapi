@@ -7,7 +7,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
-@ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(javax.persistence.EntityNotFoundException.class)

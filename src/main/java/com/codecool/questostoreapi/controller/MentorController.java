@@ -4,8 +4,11 @@ import com.codecool.questostoreapi.models.users.Mentor;
 import com.codecool.questostoreapi.repositories.MentorRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -28,7 +31,13 @@ public class MentorController {
     @GetMapping(value = "/{mentorId}")
     Mentor getMentorById(@PathVariable String mentorId)
     {   logger.info("get mentor request");
-        return repository.getById(Integer.parseInt(mentorId));
+        try {
+            return repository.getById(Integer.parseInt(mentorId));
+        } catch (EntityNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("wrong input format");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "resource not found", e);
+        }
     }
 
     @PostMapping()
