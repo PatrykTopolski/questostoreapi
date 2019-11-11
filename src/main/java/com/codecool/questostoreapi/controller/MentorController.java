@@ -29,7 +29,7 @@ public class MentorController {
     }
 
     @GetMapping(value = "/{mentorId}")
-    Mentor getMentorById(@PathVariable String mentorId)
+    Mentor getMentorById(@PathVariable String mentorId) throws EntityNotFoundException
     {   logger.info("get mentor request");
         try {
             return repository.getById(Integer.parseInt(mentorId));
