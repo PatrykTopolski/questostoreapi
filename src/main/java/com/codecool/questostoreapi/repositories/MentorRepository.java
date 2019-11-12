@@ -8,8 +8,14 @@ import javax.persistence.EntityNotFoundException;
 public interface MentorRepository extends JpaRepository<Mentor, Integer> {
     public Mentor getById(Integer id);
 
-    public boolean existsById(Integer id) throws EntityNotFoundException;
-
+    default boolean exists(Integer id) throws EntityNotFoundException {
+        if (existsById(id) == false) {
+            throw new EntityNotFoundException("mentor wasn;t found");
+        } else return true;
     }
+
+    public boolean existsById(Integer id);
+
+    };
 
 

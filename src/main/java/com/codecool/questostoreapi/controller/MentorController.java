@@ -28,25 +28,24 @@ public class MentorController {
         return repository.findAll();
     }
 
-//    @GetMapping(value = "/{mentorId}")
-//    Mentor getMentorById(@PathVariable String mentorId) throws EntityNotFoundException
-//    {   logger.info("get mentor request");
-//    if(repository.existsById(Integer.parseInt(mentorId))){
-//        return repository.getById(Integer.parseInt(mentorId));
-//    } else throw new EntityNotFoundException("Mentor with provided Id doesn't found in database");
-//    }
-
     @GetMapping(value = "/{mentorId}")
-    Mentor getMentorById(@PathVariable String mentorId) throws EntityNotFoundException {
-        logger.info("get mentor request");
-        Mentor mentor = null;
-        try {
-            mentor =  repository.getById(Integer.parseInt(mentorId));
-        } catch (EntityNotFoundException exc) {
-                exc.getMessage();
-        }
-        return mentor;
+    Mentor getMentorById(@PathVariable String mentorId) throws EntityNotFoundException
+    {   logger.info("get mentor request");
+    if(repository.existsById(Integer.parseInt(mentorId))){
+        return repository.getById(Integer.parseInt(mentorId));
+    } else throw new EntityNotFoundException("Mentor with provided Id doesn't found in database");
     }
+
+//    @GetMapping(value = "/{mentorId}")
+//    Mentor getMentorById(@PathVariable String mentorId) throws EntityNotFoundException {
+//        logger.info("get mentor request");
+//        try {
+//            repository.exists(Integer.parseInt(mentorId));
+//        } catch (EntityNotFoundException exc) {
+//            System.out.println(exc.getMessage());
+//        }
+//        return repository.getById(Integer.parseInt(mentorId));
+//    }
 
 
     @PostMapping()
