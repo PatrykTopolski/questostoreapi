@@ -1,22 +1,30 @@
 package com.codecool.questostoreapi.controller;
 
 import com.codecool.questostoreapi.errors.ApiError;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
+import com.codecool.questostoreapi.errors.EntityNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 
 @ControllerAdvice
-public class RestExceptionHandler extends RuntimeException {
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler()
-    protected ResponseEntity<Object> handleEntityNotFound(javax.persistence.EntityNotFoundException ex) {
-        String message  = "Resource not found";
-        return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, message, ex));
+//    @ExceptionHandler()
+//    protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
+//        String message  = "Resource not found";
+//        return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, message, ex));
+//    }
+//
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    protected ResponseEntity<Object> handleEntityNotFound(
+            EntityNotFoundException ex) {
+        ApiError apiError = new ApiError(NOT_FOUND);
+        apiError.setMessage(ex.getMessage());
+        return buildResponseEntity(apiError);
     }
 
     private ResponseEntity<Object> buildResponseEntity(ApiError apiError) {

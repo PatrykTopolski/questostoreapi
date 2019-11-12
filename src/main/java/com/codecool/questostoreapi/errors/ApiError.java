@@ -22,6 +22,7 @@ public class ApiError {
         this.status = status;
     }
 
+
     public ApiError(HttpStatus status, Throwable ex) {
         this();
         this.status = status;
@@ -38,6 +39,10 @@ public class ApiError {
 
     public HttpStatus getStatus() {
         return status;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
 }
