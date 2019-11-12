@@ -12,12 +12,6 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-//    @ExceptionHandler()
-//    protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
-//        String message  = "Resource not found";
-//        return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, message, ex));
-//    }
-//
 
     @ExceptionHandler(EntityNotFoundException.class)
     protected ResponseEntity<Object> handleEntityNotFound(
