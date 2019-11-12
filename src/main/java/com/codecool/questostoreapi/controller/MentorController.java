@@ -31,8 +31,9 @@ public class MentorController {
     @GetMapping(value = "/{mentorId}")
     Mentor getMentorById(@PathVariable String mentorId) throws EntityNotFoundException
     {   logger.info("get mentor request");
+    if(repository.existsById(Integer.parseInt(mentorId))){
         return repository.getById(Integer.parseInt(mentorId));
-
+    } else throw new EntityNotFoundException("Mentor with provided Id doesn't found in database");
     }
 
     @PostMapping()
