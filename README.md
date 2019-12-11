@@ -1,8 +1,8 @@
 # questostoreapi
 
-API for our previous project Questo store written in java Spring Boot framework, with basic security layer 
-we used Swagger for frontend and deployed on heroku 
-project can be seen here
+REST API for our previous project - Questo Store - written in Spring Boot framework, with basic security layer. 
+We used Swagger for frontend and deployed it on Heroku. 
+Project can be seen here
 https://questo-store-api.herokuapp.com/swagger-ui.html#/
-becouse this is educational project you can login to acces methods as "user, password" and "admin, password"
-(after 15 minuts of beeing unused aplication resets database and itself)
+API allows to send requests after login as one of two defined user types: user (login: "user", password: "password") or admin (login: "admin", password: "password"). User has limited acces to send only GET requests, admin can also send POST, PUT and DELETE requests. 
+After 15 minuts of beeing unused aplication resets database and itself.
