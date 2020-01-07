@@ -23,7 +23,9 @@ public class ArtifactController {
     @GetMapping(value = "/{artifactId}")
     public Artifact getArtifactById(@PathVariable String artifactId){
         logger.info("get artifact request");
-        return artifactRepo.getArtifactById(Integer.parseInt(artifactId));
+        if(artifactRepo.existsById(Integer.parseInt(artifactId))){
+            return artifactRepo.getArtifactById(Integer.parseInt(artifactId));
+        } else throw new ResourceNotFoundException;
     }
 
     @PostMapping()
